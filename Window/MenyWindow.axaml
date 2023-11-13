@@ -1,0 +1,29 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="AN_UP.Window.MenyWindow"
+        Title="MenyWindow">
+                 <StackPanel 
+                        Orientation="Vertical" VerticalAlignment="Center"
+                        HorizontalAlignment="Center">
+                        <TextBlock 
+                                Margin="20"  HorizontalAlignment="Center"
+                                Text="МЕНЮ"
+                                FontSize="30"/>
+
+                        <Button x:Name="BtnDisease" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+                                Content="Список больных"
+                                Click="BtnDisease_OnClick"/>
+                        <Button x:Name="BtnProcedure" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+                                Content="Список процедур \ график работы"
+                                Click="BtnProcedure_OnClick"/>
+                        <Button x:Name="BtnReports" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+                                Content="Создание отчёта"
+                                Click="BtnReports_OnClick"/>
+                        <Button x:Name="BtnBack" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+                                Content="Назад"
+                                Click="BtnBack_OnClick"/>
+                </StackPanel>
+</Window>

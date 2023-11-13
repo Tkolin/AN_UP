@@ -1,0 +1,11 @@
+﻿<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" 
+        xmlns:models="clr-namespace:AN_UP.DateBase"
+        MinHeight="600" MinWidth = "1200"  MaxHeight="600" MaxWidth = "1200" 
+        x:Class="AN_UP.Window.ReportWindow"
+        Title="ReportWindow">
+    Welcome to Avalonia!
+</Window>
