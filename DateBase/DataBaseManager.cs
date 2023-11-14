@@ -202,7 +202,7 @@ public class DataBaseManager
                                 reader.GetDateTime("DateStart"),
                                 reader.GetInt32("Duration"),
                                 reader.GetDecimal("Cost"),
-                                reader.GetString("StatusId")
+                                reader.GetInt32("StatusId")
                             )
                         );
                     }

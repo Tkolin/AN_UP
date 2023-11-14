@@ -11,13 +11,45 @@
 
          <Grid Grid.Column="0">
              <Grid ShowGridLines="True" Margin="0,30,0,0"
-                   ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*"
-                   Background="Aquamarine" />
+                   ColumnDefinitions="*,*" RowDefinitions="1*,10*,0.5*">
+                 
+                 <TextBlock FontSize="30" Text="Отчёт" HorizontalAlignment="Right"/>
+                 
+                 
+                 <StackPanel Grid.Row="1" Grid.Column="0" Orientation="Vertical">
+                     <StackPanel Orientation="Horizontal">
+                         <TextBlock Text="Кол-во проведённых процедур: "/>
+                         <TextBlock x:Name="TBoxCountProcedure" Text="NaN"/>
+                     </StackPanel>
+                     <TextBlock  Text="Список процедур"/>
+                     <TextBlock x:Name="TBoxProcedureList" Text="------"/>
+                 </StackPanel>
+                 <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Vertical">
+                     <StackPanel Orientation="Horizontal">
+                         <TextBlock Text="Период: "/>
+                         <TextBlock x:Name="TBoxDateSelected" Text="NaN"/>
+                     </StackPanel>
+                     <StackPanel Orientation="Horizontal">
+                         <TextBlock Text="Врач: "/>
+                         <TextBlock x:Name="TBoxDoctor" Text="NaN"/>
+                     </StackPanel>
+                     <StackPanel Orientation="Horizontal">
+                         <TextBlock Text="Пациент: "/>
+                         <TextBlock x:Name="TBoxPatient" Text="NaN"/>
+                     </StackPanel>
+                     <StackPanel Orientation="Horizontal">
+                         <TextBlock Text="Статус процедуры: "/>
+                         <TextBlock x:Name="TBoxStatus" Text="NaN"/>
+                     </StackPanel>
+                     </StackPanel>
+                 <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal"
+                      HorizontalAlignment="Right">
+                     <TextBlock Text="Итоговая прибыль: "/>
+                     <TextBlock x:Name="TBoxPrice" Text="NaN"/>
+                 </StackPanel>
+             </Grid>
          </Grid>
-        
         <Grid Grid.Column="1"  ShowGridLines="True"  RowDefinitions="3*,*">
-                
-   
             <TextBlock Text="Настройки:" Margin="5"
                        HorizontalAlignment="Center"/>
              
@@ -50,9 +82,7 @@
                                Click="BtnStatusClear_OnClick"/> 
 
                    </StackPanel>
-            
-                   
-                </StackPanel>
+            </StackPanel>
      
 
                
@@ -64,16 +94,16 @@
                 
                 
                 <Button x:Name="BtnReset" HorizontalAlignment="Center" Margin="5"
-                        Click="BtnSavet_OnClick" Width="200" HorizontalContentAlignment="Center"
+                        Click="BtnReset_OnClick" Width="200" HorizontalContentAlignment="Center"
                         Content="Сбросить" />
 
 
                 <Button x:Name="BtnGenerate" HorizontalAlignment="Center" Margin="5"
-                        Click="BtnSavet_OnClick" Width="200" HorizontalContentAlignment="Center"
+                        Click="BtnGenerate_OnClick" Width="200" HorizontalContentAlignment="Center"
                         Content="Сгенерировать" />
                 
                 <Button x:Name="BtnGoPrint" HorizontalAlignment="Center" Margin="5"
-                        Click="BtnSavet_OnClick" Width="200" HorizontalContentAlignment="Center"
+                        Click="BtnGoPrint_OnClick" Width="200" HorizontalContentAlignment="Center"
                         Content="В печать" />
             </StackPanel>
 

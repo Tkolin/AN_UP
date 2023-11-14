@@ -1,4 +1,6 @@
-﻿using Avalonia;
+﻿using System.Collections.Generic;
+using AN_UP.DateBase;
+using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
 using Avalonia.Markup.Xaml;
@@ -7,58 +9,91 @@ namespace AN_UP.Window;
 
 public partial class ReportWindow : Avalonia.Controls.Window
 {
+    private List<Status> _StatusList { get; set; }
+    private List<Doctor> _DoctorsList { get; set; }
+    private List<Patient> _PatientsList { get; set; }
     public ReportWindow()
     {
         InitializeComponent();
+        UpdateComboBox();
     }
 
-    private void ResetBtn_OnClick(object? sender, RoutedEventArgs e)
+    private void UpdateComboBox()
     {
-        throw new System.NotImplementedException();
-    }
+        _StatusList = DataBaseManager.GetStatusList();
+        _DoctorsList = DataBaseManager.GetDoctors();
+        _PatientsList = DataBaseManager.GetPatients();
 
-    private void DataGrid_OnSelectionChanged(object? sender, SelectionChangedEventArgs e)
+        CBoxStatus.SelectedItem = _StatusList;
+        CBoxDoctor.SelectedItem = _DoctorsList;
+        CBoxPatient.SelectedItem = _PatientsList;
+    }
+    
+    private void GenerateReport()
     {
-        throw new System.NotImplementedException();
-    }
+        List<Procedure> procedures = DataBaseManager.GetProcedures();
 
-    private void BtnDelet_OnClick(object? sender, RoutedEventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
+        decimal price = 0;
 
-    private void BtnRemoveSelect_OnClick(object? sender, RoutedEventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
+        if (CBoxPatient.SelectedItem == null)
+            TBoxPatient.Text = "Все";
+        else
+            TBoxPatient.Text = (CBoxPatient.SelectedItem as Patient).FirstName + " " +
+                               (CBoxPatient.SelectedItem as Patient).LastName;
+        
+        if (CBoxDoctor.SelectedItem == null)
+            TBoxDoctor.Text = "Все";
+        else
+            TBoxDoctor.Text = (CBoxDoctor.SelectedItem as Doctor).FirstName + " " +
+                              (CBoxDoctor.SelectedItem as Doctor).LastName;
+        
+        if (CBoxStatus.SelectedItem == null)
+            TBoxStatus.Text = "Все";
+        else
+            TBoxStatus.Text = (CBoxStatus.SelectedItem as Status).Name;
+           
+        TBoxCountProcedure.Text = procedures.Count.ToString();
+        TBoxDateSelected.Text =
+            DPicerStart.SelectedDate.Value.ToString() + " - " + DPicerEnd.SelectedDate.Value.ToString();
+        foreach (Procedure value in procedures)
+        {
+            TBoxProcedureList.Text += value.Id + " | " + value.DateStart.Date + " | " + value.Cost.ToString();
+            price += value.Cost;
+        }
 
-    private void BtnSavet_OnClick(object? sender, RoutedEventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
+        TBoxPrice.Text = price.ToString();
 
-    private void BtnCreateProcedure_OnClick(object? sender, RoutedEventArgs e)
-    {
-        throw new System.NotImplementedException();
     }
-
-    private void BtnRecover_OnClick(object? sender, RoutedEventArgs e)
-    {
-        throw new System.NotImplementedException();
-    }
-
     private void BtnPatientClear_OnClick(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        CBoxPatient.SelectedItem = null;
     }
 
     private void BtnDoctorClear_OnClick(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        CBoxDoctor.SelectedItem = null;
     }
 
     private void BtnStatusClear_OnClick(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        CBoxStatus.SelectedItem = null;
+    }
+
+    private void BtnReset_OnClick(object? sender, RoutedEventArgs e)
+    {
+        CBoxPatient.SelectedItem = null;
+        CBoxDoctor.SelectedItem = null;
+        CBoxStatus.SelectedItem = null;
+    }
+
+    private void BtnGenerate_OnClick(object? sender, RoutedEventArgs e)
+    {
+        CBoxPatient.SelectedItem = null;
+    }
+
+    private void BtnGoPrint_OnClick(object? sender, RoutedEventArgs e)
+    {
+        CBoxPatient.SelectedItem = null;
+        //Метод печати формы
     }
 }

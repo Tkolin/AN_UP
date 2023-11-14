@@ -179,4 +179,27 @@ public partial class PacientDiseaseWindow : Avalonia.Controls.Window
         
         DownloadDataGrid();
     }
+
+    private void BtnUpdateFinalPrice_OnClick(object? sender, RoutedEventArgs e)
+    {
+        if(DataGrid.SelectedItem == null)
+            return;
+
+        DiseaseRecord diseaseRecord = DataGrid.SelectedItem as DiseaseRecord;
+
+        List<Procedure> procedures = DataBaseManager.GetProcedures().Where(
+            p => p.DiseaseRecordID == diseaseRecord.Id).ToList();
+
+        decimal finalPrice = 0;
+
+        foreach (Procedure value in procedures)
+        {
+            if (value.StatusID == 4)
+                finalPrice += value.Cost;
+        }
+
+        diseaseRecord.FinalPrice = finalPrice;
+        
+        DataBaseManager.UpdateDiseaseRecord(diseaseRecord);
+    }
 }

@@ -106,6 +106,9 @@
                 <Button x:Name="BtnRecover" HorizontalAlignment="Center" Margin="5"
                         Click="BtnRecover_OnClick"
                         Content="Отметить выздоровление" />
+                <Button x:Name="BtnUpdateFinalPrice" HorizontalAlignment="Center" Margin="5"
+                        Click="BtnUpdateFinalPrice_OnClick"
+                        Content="Обновить итоговую стоимость" />
             </StackPanel>
         </Grid>
     </Grid>

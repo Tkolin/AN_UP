@@ -1,4 +1,5 @@
-﻿using AN_UP.DateBase;
+﻿using System;
+using AN_UP.DateBase;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Interactivity;
@@ -17,6 +18,15 @@ public partial class AddProcedureWindow : Avalonia.Controls.Window
 
     private void BtnSavet_OnClick(object? sender, RoutedEventArgs e)
     {
-        throw new System.NotImplementedException();
+        DataBaseManager.AddProcedure(new Procedure(
+            0,
+            (CBoxDisiaseRecord.SelectedItem as Doctor).Id,
+            (CBoxDisiaseRecord.SelectedItem as DiseaseRecord).Id,
+            TBoxDescription.Text,
+            DPickerDateStart.SelectedDate.Value.Date,
+            Convert.ToInt32(NUpDownDuration.Value.Value),
+            NUpDownCost.Value.Value,
+            (CBoxStatus.SelectedItem as Status).Id
+        ));
     }
 }
