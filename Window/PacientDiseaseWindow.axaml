@@ -17,6 +17,13 @@
                            Margin="0,20" SelectionChanged="DataGrid_OnSelectionChanged"
                            x:DataType="models:DiseaseRecord">
                  <DataGrid.Columns>
+                     <DataGridTextColumn Width="*" Header="ID пациента" Binding="{Binding PatientID}"/>
+                     <DataGridTextColumn Width="*" Header="Цена" Binding="{Binding FinalPrice}"/>
+                     <DataGridTextColumn Width="*" Header="Начало" Binding="{Binding DateStart}"/>
+                     <DataGridTextColumn Width="*" Header="Окончание" Binding="{Binding DateEnd}"/>
+                     <DataGridTextColumn Width="*" Header="ID статуса" Binding="{Binding StatusID}"/>
+                     <DataGridTextColumn Width="*" Header="ID врача" Binding="{Binding AttendingDoctorID}"/>
+                     <DataGridTextColumn Width="*" Header="ID заболевания" Binding="{Binding DiseaseID}"/>
 
                  </DataGrid.Columns>
              </DataGrid>

@@ -5,5 +5,42 @@
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AN_UP.Window.AddProcedureWindow"
         Title="Создание записи процедуры">
-    Welcome to Avalonia!
+            <StackPanel  HorizontalAlignment = "Center" VerticalAlignment="Center"  Margin="2">
+                <TextBlock Text="Редактирование процедуры" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+
+          
+
+                <TextBlock Text="Врач:"/>
+                <ComboBox x:Name="CBoxAttendingDoctor" Width="250">
+                    <ComboBox.ItemTemplate>
+                       
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Text="Пациент:"/>
+                <ComboBox x:Name="CBoxDisiaseRecord" Width="250">
+                    <ComboBox.ItemTemplate>
+                       
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                <TextBlock Text="Описание:" />
+                <TextBox x:Name="TBoxDescription" Width="250" Height="50" MaxLines="10"/>
+                
+                <TextBlock Text="Дата проведения:" IsEnabled="False" />
+                <DatePicker x:Name="DPickerDateStart" Width="250" />
+                <TextBlock Text="Продолжительность:" IsEnabled="False"/>
+                <NumericUpDown x:Name="NUpDownDuration" Width="250"/>
+                <TextBlock Text="Стоимость:" IsEnabled="False"/>
+                <NumericUpDown x:Name="NUpDownCost" Width="250"/>
+                <TextBlock Text="Статус:" IsEnabled="False"/>
+                <ComboBox x:Name="CBoxStatus" Width="250">
+                    <ComboBox.ItemTemplate>
+                       
+                    </ComboBox.ItemTemplate>
+                </ComboBox>
+                
+                
+                <Button x:Name="BtnSavet" HorizontalAlignment="Center" Margin="5"
+                        Click="BtnSavet_OnClick"
+                        Content="Сохранить" />
+            </StackPanel>
 </Window>

@@ -17,7 +17,7 @@
                                 Content="Список больных"
                                 Click="BtnDisease_OnClick"/>
                         <Button x:Name="BtnProcedure" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
-                                Content="Список процедур \ график работы"
+                                Content="Список процедур график работы"
                                 Click="BtnProcedure_OnClick"/>
                         <Button x:Name="BtnReports" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
                                 Content="Создание отчёта"

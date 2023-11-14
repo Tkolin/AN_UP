@@ -9,97 +9,67 @@
         Title="Генератор отчётов">
      <Grid ShowGridLines="True" ColumnDefinitions="1*,0.6*">
 
-         <DataGrid Grid.Column="0"  x:Name="DataGrid"
-                           AutoGenerateColumns="False"
-                           IsReadOnly="True"
-                           GridLinesVisibility="All"
-                           BorderThickness="2"
-                           Margin="0,20" SelectionChanged="DataGrid_OnSelectionChanged"
-                           x:DataType="models:DiseaseRecord">
-                 <DataGrid.Columns>
-
-                 </DataGrid.Columns>
-             </DataGrid>
+         <Grid Grid.Column="0">
+             <Grid ShowGridLines="True" Margin="0,30,0,0"
+                   ColumnDefinitions="*,*" RowDefinitions="*,*,*,*,*"
+                   Background="Aquamarine" />
+         </Grid>
         
-        <Grid Grid.Column="1" ShowGridLines="True"  RowDefinitions="1*,2*">
-
-            <StackPanel Grid.Column="0" Grid.Row="0" HorizontalAlignment = "Center" Margin="5">
-
-                     
-                <TextBlock Text="Поиск:" Margin="0,0,0,10"  HorizontalAlignment="Center"/>
+        <Grid Grid.Column="1"  ShowGridLines="True"  RowDefinitions="3*,*">
+                
+   
+            <TextBlock Text="Настройки:" Margin="5"
+                       HorizontalAlignment="Center"/>
              
-                <TextBox x:Name="SearchBox" 
-                         Margin="5"
-                         Width="250"/>
-                <Button x:Name="ResetBtn"
-                        Click="ResetBtn_OnClick"
-                        Content="Отчистить" HorizontalAlignment="Center"/>
+                <StackPanel Grid.Row="0" Margin="10,30,0,0">
+                   <TextBlock Text="Период от:"/>
+                    <DatePicker x:Name="DPicerStart"/>
+                   <TextBlock Text="до:"/>
+                    <DatePicker x:Name="DPicerEnd"/>
+                   
+                   <TextBlock Text="Врач:"/>
+                   <ComboBox x:Name="CBoxDoctor">
+                       <ComboBox.Template>
+                           <ControlTemplate />
+                       </ComboBox.Template>
+                   </ComboBox>
+                   <TextBlock Text="Пациент:"/>
+                   <ComboBox x:Name="CBoxPatient">
+                       <ComboBox.Template>
+                           <ControlTemplate />
+                       </ComboBox.Template>
+                   </ComboBox>
+                   <TextBlock Text="Статус:"/>
+                   <ComboBox x:Name="CBoxStatus">
+                       <ComboBox.Template>
+                           <ControlTemplate />
+                       </ComboBox.Template>
+                   </ComboBox>
+                </StackPanel>
      
 
                
-            </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="0" HorizontalAlignment = "Center" Margin="5">
-                <TextBlock Text="Действия:" Margin="0,0,0,10" HorizontalAlignment="Center"/>
-                <Button x:Name="BtnDelet" Margin="5"
-                        Click="BtnDelet_OnClick" Width="200" HorizontalContentAlignment="Center"
-                        Content="Удалить"/>
-                <Button x:Name="BtnRemoveSelect"
-                        Click="BtnRemoveSelect_OnClick" Width="200" HorizontalContentAlignment="Center"
-                        Content="Отменить выделение" Margin="5"/>            
+    
+
+            <StackPanel Grid.Row="1" HorizontalAlignment = "Center"  Margin="2">
+                <TextBlock Text="Управление" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+
                 
-               
-            </StackPanel>
-            <StackPanel Grid.Column="0" Grid.Row="1" HorizontalAlignment = "Center"  Margin="2">
-                <TextBlock Text="Редактирование" Margin="0,0,0,10" HorizontalAlignment="Center"/>
+                
+                <Button x:Name="BtnReset" HorizontalAlignment="Center" Margin="5"
+                        Click="BtnSavet_OnClick" Width="200" HorizontalContentAlignment="Center"
+                        Content="Сбросить" />
 
 
-                <TextBlock Text="Пациент:"/>
-                <ComboBox x:Name="CBoxPatient" Width="250">
-                    <ComboBox.ItemTemplate>
-                       
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <TextBlock Text="Итоговая цена:" />
-                <NumericUpDown x:Name="NUpDownFinalPrice" IsEnabled="False" Width="250"/>
-                <TextBlock Text="Дата начала:" IsEnabled="False" />
-                <DatePicker x:Name="DPickerDateStart" Width="250" />
-                <TextBlock Text="Дата окончания:" IsEnabled="False"/>
-                <DatePicker x:Name="DPickerDateEnd" Width="250"/>
-                <TextBlock Text="Статус:"/>
-                <ComboBox x:Name="CBoxStatus" Width="250">
-                    <ComboBox.ItemTemplate>
-                       
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <TextBlock Text="Лечащий врач:"/>
-                <ComboBox x:Name="CBoxAttendingDoctor" Width="250">
-                    <ComboBox.ItemTemplate>
-                       
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
-                <TextBlock Text="Болезнь:"/>
-                <ComboBox x:Name="CBoxDisease" Width="250">
-                    <ComboBox.ItemTemplate>
-                       
-                    </ComboBox.ItemTemplate>
-                </ComboBox>
+                <Button x:Name="BtnGenerate" HorizontalAlignment="Center" Margin="5"
+                        Click="BtnSavet_OnClick" Width="200" HorizontalContentAlignment="Center"
+                        Content="Сгенерировать" />
                 
-                
-                
-                <Button x:Name="BtnSavet" HorizontalAlignment="Center" Margin="5"
-                        Click="BtnSavet_OnClick"
-                        Content="Сохранить" />
+                <Button x:Name="BtnGoPrint" HorizontalAlignment="Center" Margin="5"
+                        Click="BtnSavet_OnClick" Width="200" HorizontalContentAlignment="Center"
+                        Content="В печать" />
             </StackPanel>
-            <StackPanel Grid.Column="1" Grid.Row="1" HorizontalAlignment = "Center"  Margin="5">
-                <TextBlock Text="Распределение" Margin="0,0,0,10" HorizontalAlignment="Center"/>
-                
-                <Button x:Name="BtnCreateProcedure" HorizontalAlignment="Center" Margin="5"
-                        Click="BtnCreateProcedure_OnClick"
-                        Content="Назначить процедуру" />
-                <Button x:Name="BtnRecover" HorizontalAlignment="Center" Margin="5"
-                        Click="BtnRecover_OnClick"
-                        Content="Отметить выздоровление" />
-            </StackPanel>
+
         </Grid>
     </Grid>
 </Window>

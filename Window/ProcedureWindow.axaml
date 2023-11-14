@@ -17,6 +17,13 @@
                            Margin="0,20" SelectionChanged="DataGrid_OnSelectionChanged"
                            x:DataType="models:Procedure">
                  <DataGrid.Columns>
+                     <DataGridTextColumn Width="*" Header="ID врача" Binding="{Binding DoctorID}"/>
+                     <DataGridTextColumn Width="*" Header="ID записи о заболевании" Binding="{Binding DiseaseRecordID}"/>
+                     <DataGridTextColumn Width="*" Header="Описание" Binding="{Binding Description}"/>
+                     <DataGridTextColumn Width="*" Header="Время" Binding="{Binding DateStart}"/>
+                     <DataGridTextColumn Width="*" Header="Продолжительность" Binding="{Binding Duration}"/>
+                     <DataGridTextColumn Width="*" Header="Стоимость" Binding="{Binding Cost}"/>
+                     <DataGridTextColumn Width="*" Header="ID статуса" Binding="{Binding StatusID}"/>
 
                  </DataGrid.Columns>
              </DataGrid>

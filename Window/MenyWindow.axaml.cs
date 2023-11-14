@@ -14,24 +14,23 @@ public partial class MenyWindow : Avalonia.Controls.Window
     {
         InitializeComponent();
         this.user = user;
+        BtnProcedure.IsVisible = true;
+        BtnDisease.IsVisible = true;
+        BtnReports.IsVisible = true;
         switch (user.PositionID)
         {
-            case 1: //Админ
-                BtnProcedure.IsVisible = true;
-                BtnDisease.IsVisible = true;
-                BtnReports.IsVisible = true;
-                break;
             case 2: //Менеджер
                 BtnProcedure.IsVisible = false;
-                BtnDisease.IsVisible = true;
-                BtnReports.IsVisible = true;
                 break;
             case 3: //Врач
-                BtnProcedure.IsVisible = true;
                 BtnDisease.IsVisible = false;
                 BtnReports.IsVisible = false;
                 break;
         }
+    }
+
+    public MenyWindow()
+    {
     }
 
     private void BtnDisease_OnClick(object? sender, RoutedEventArgs e)

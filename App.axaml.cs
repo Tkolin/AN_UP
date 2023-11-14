@@ -1,3 +1,4 @@
+using AN_UP.Window;
 using Avalonia;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Markup.Xaml;
@@ -15,7 +16,7 @@ public partial class App : Application
     {
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            desktop.MainWindow = new LoginWindow();
+            desktop.MainWindow = new MenyWindow();
         }
 
         base.OnFrameworkInitializationCompleted();
