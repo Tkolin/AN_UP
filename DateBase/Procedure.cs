@@ -11,10 +11,10 @@ public class Procedure
     public DateTime DateStart { get; set; }
     public int Duration { get; set; }
     public decimal Cost { get; set; }
-    public string StatusID { get; set; }
+    public int StatusID { get; set; }
 
     public Procedure(int id, int doctorId, int diseaseRecordId,
-        string description, DateTime dateStart, int duration, decimal cost, string statusId)
+        string description, DateTime dateStart, int duration, decimal cost, int statusId)
     {
         Id = id;
         DoctorID = doctorId;
