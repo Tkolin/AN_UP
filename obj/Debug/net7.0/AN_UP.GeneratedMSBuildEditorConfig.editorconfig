@@ -18,6 +18,9 @@ build_property.ProjectDir = C:\Users\TSystem\RiderProjects\AN_UP\
 [C:/Users/TSystem/RiderProjects/AN_UP/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[C:/Users/TSystem/RiderProjects/AN_UP/Window/AddProcedureWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [C:/Users/TSystem/RiderProjects/AN_UP/Window/LoginWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 

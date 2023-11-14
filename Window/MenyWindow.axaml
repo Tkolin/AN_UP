@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
         x:Class="AN_UP.Window.MenyWindow"
-        Title="MenyWindow">
+        Title="Меню">
                  <StackPanel 
                         Orientation="Vertical" VerticalAlignment="Center"
                         HorizontalAlignment="Center">
@@ -22,7 +22,7 @@
                         <Button x:Name="BtnReports" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
                                 Content="Создание отчёта"
                                 Click="BtnReports_OnClick"/>
-                        <Button x:Name="BtnBack" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
+                        <Button x:Name="BtnBack" Margin="4" Width="100" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
                                 Content="Назад"
                                 Click="BtnBack_OnClick"/>
                 </StackPanel>

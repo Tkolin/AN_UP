@@ -36,4 +36,24 @@ public partial class PacientDiseaseWindow : Avalonia.Controls.Window
     {
         throw new System.NotImplementedException();
     }
+
+    private void BtnSavet_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void BtnCreateExecution_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void BtnCreateProcedure_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void BtnRecover_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }

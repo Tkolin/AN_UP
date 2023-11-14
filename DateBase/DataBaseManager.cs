@@ -5,7 +5,7 @@ using MySqlConnector;
 
 namespace AN_UP.DateBase;
 
-public class DateBaseManager
+public class DataBaseManager
 {
     /// Настройки подключения
     public static MySqlConnectionStringBuilder ConnectionString =
@@ -201,7 +201,8 @@ public class DateBaseManager
                                 reader.GetString("Description"),
                                 reader.GetDateTime("DateStart"),
                                 reader.GetInt32("Duration"),
-                                reader.GetDecimal("Cost")
+                                reader.GetDecimal("Cost"),
+                                reader.GetString("StatusId")
                             )
                         );
                     }
@@ -418,8 +419,8 @@ public class DateBaseManager
             using (var command = connection.CreateCommand())
             {
                 command.CommandText =
-                    "INSERT INTO Procedure (ID, DoctorID, DiseaseRecordID, Description, DateStart, Duration, Cost) " +
-                    "VALUES (@ID, @DoctorID, @DiseaseRecordID, @Description, @DateStart, @Duration, @Cost);";
+                    "INSERT INTO Procedure (ID, DoctorID, DiseaseRecordID, Description, DateStart, Duration, Cost, StatusID) " +
+                    "VALUES (@ID, @DoctorID, @DiseaseRecordID, @Description, @DateStart, @Duration, @Cost, @StatusID);";
                 command.Parameters.AddWithValue("@ID", data.Id);
                 command.Parameters.AddWithValue("@DoctorID", data.DoctorID);
                 command.Parameters.AddWithValue("@DiseaseRecordID", data.DiseaseRecordID);
@@ -427,6 +428,7 @@ public class DateBaseManager
                 command.Parameters.AddWithValue("@DateStart", data.DateStart);
                 command.Parameters.AddWithValue("@Duration", data.Duration);
                 command.Parameters.AddWithValue("@Cost", data.Cost);
+                command.Parameters.AddWithValue("@StatusID", data.StatusID);
                 var rowsCount = command.ExecuteNonQuery();
                 if (rowsCount == 0)
                 {
@@ -824,7 +826,7 @@ public class DateBaseManager
             {
                 command.CommandText =
                     "UPDATE Procedure SET DoctorID = @DoctorID, DiseaseRecordID = @DiseaseRecordID, Description = @Description, " +
-                    "DateStart = @DateStart, Duration = @Duration, Cost = @Cost WHERE ID = @ID;";
+                    "DateStart = @DateStart, Duration = @Duration, Cost = @Cost, StatusID = @StatusID WHERE ID = @ID;";
                 command.Parameters.AddWithValue("@ID", data.Id);
                 command.Parameters.AddWithValue("@DoctorID", data.DoctorID);
                 command.Parameters.AddWithValue("@DiseaseRecordID", data.DiseaseRecordID);
@@ -832,6 +834,7 @@ public class DateBaseManager
                 command.Parameters.AddWithValue("@DateStart", data.DateStart);
                 command.Parameters.AddWithValue("@Duration", data.Duration);
                 command.Parameters.AddWithValue("@Cost", data.Cost);
+                command.Parameters.AddWithValue("@StatusID", data.StatusID);
                 var rowsCount = command.ExecuteNonQuery();
                 if (rowsCount == 0)
                 {

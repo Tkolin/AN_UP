@@ -4,24 +4,25 @@ namespace AN_UP.DateBase;
 
 public class Procedure
 {
-       public int Id  { get; set; }
-       public   int      DoctorID { get; set; }
-       public  int  DiseaseRecordID { get; set; }
-       public    string        Description { get; set; }
-       public DateTime   DateStart { get; set; }
-       public    int       Duration { get; set; }
-       public decimal  Cost { get; set; }
+    public int Id { get; set; }
+    public int DoctorID { get; set; }
+    public int DiseaseRecordID { get; set; }
+    public string Description { get; set; }
+    public DateTime DateStart { get; set; }
+    public int Duration { get; set; }
+    public decimal Cost { get; set; }
+    public string StatusID { get; set; }
 
-       public Procedure(int id, int doctorId, int diseaseRecordId,
-           string description, DateTime dateStart, int duration, decimal cost)
-       {
-           Id = id;
-           DoctorID = doctorId;
-           DiseaseRecordID = diseaseRecordId;
-           Description = description;
-           DateStart = dateStart;
-           Duration = duration;
-           Cost = cost;
-
-       }
+    public Procedure(int id, int doctorId, int diseaseRecordId,
+        string description, DateTime dateStart, int duration, decimal cost, string statusId)
+    {
+        Id = id;
+        DoctorID = doctorId;
+        DiseaseRecordID = diseaseRecordId;
+        Description = description;
+        DateStart = dateStart;
+        Duration = duration;
+        Cost = cost;
+        StatusID = statusId;
+    }
 }

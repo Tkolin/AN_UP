@@ -3,7 +3,13 @@
   <component name="AvaloniaProject">
     <option name="projectPerEditor">
       <map>
+        <entry key="App.axaml" value="AN_UP.csproj" />
+        <entry key="Window/AddProcedureWindow.axaml" value="AN_UP.csproj" />
+        <entry key="Window/LoginWindow.axaml" value="AN_UP.csproj" />
+        <entry key="Window/MenyWindow.axaml" value="AN_UP.csproj" />
         <entry key="Window/PacientDiseaseWindow.axaml" value="AN_UP.csproj" />
+        <entry key="Window/ProcedureWindow.axaml" value="AN_UP.csproj" />
+        <entry key="Window/ReportWindow.axaml" value="AN_UP.csproj" />
       </map>
     </option>
   </component>
