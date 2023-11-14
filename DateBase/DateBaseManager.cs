@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using MsBox.Avalonia;
+using MsBox.Avalonia.Enums;
 using MySqlConnector;
 
 namespace AN_UP.DateBase;
@@ -270,5 +272,596 @@ public class DateBaseManager
             connection.Close();
         }
         return data;
+    }
+    /// Добавление
+    public static void AddDisiase (Disease data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Disease (ID, Name, DurationLiness) VALUES (@ID, @Name, @DurationLiness);";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@Name", data.Name);
+                command.Parameters.AddWithValue("@DurationLiness", data.DurationLiness);
+
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не добавлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void AddDiseaseRecord (DiseaseRecord data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO DiseaseRecord (ID, PatientID, FinalPrice, DateStart, DateEnd, StatusID, AttendingDoctorID, DiseaseID, FInalPrice) " +
+                                      "VALUES (@ID, @PatientID, @FinalPrice, @DateStart, @DateEnd, @StatusID, @AttendingDoctorID, @DiseaseID, @FinalPrice);";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@PatientID", data.PatientID);
+                command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice);
+                command.Parameters.AddWithValue("@DateStart", data.DateStart);
+                command.Parameters.AddWithValue("@DateEnd", data.DateEnd);
+                command.Parameters.AddWithValue("@StatusID", data.StatusID);
+                command.Parameters.AddWithValue("@AttendingDoctorID", data.AttendingDoctorID);
+                command.Parameters.AddWithValue("@DiseaseID", data.DiseaseID);
+                command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice);
+
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не добавлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void AddDoctor (Doctor data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Doctor (ID, FirstName, LastName, Patronymic, EmploymentDate, PositionID, Login, Password) " +
+                                      "VALUES (@ID, @FirstName, @LastName, @Patronymic, @EmploymentDate, @PositionID, @Login, @Password);";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@FirstName", data.FirstName);
+                command.Parameters.AddWithValue("@LastName", data.LastName);
+                command.Parameters.AddWithValue("@Patronymic", data.Patronymic);
+                command.Parameters.AddWithValue("@EmploymentDate", data.EmploymentDate);
+                command.Parameters.AddWithValue("@PositionID", data.PositionID);
+                command.Parameters.AddWithValue("@Login", data.Login);
+                command.Parameters.AddWithValue("@Password", data.Password);
+
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не добавлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void AddPatient (Patient data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Patient (ID, FirstName, LastName, Patronymic, DateBirth, PhoneNumber) " +
+                                      "VALUES (@ID, @FirstName, @LastName, @Patronymic, @DateBirth, @PhoneNumber);";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@FirstName", data.FirstName);
+                command.Parameters.AddWithValue("@LastName", data.LastName);
+                command.Parameters.AddWithValue("@Patronymic", data.Patronymic);
+                command.Parameters.AddWithValue("@DateBirth", data.DateBirth);
+                command.Parameters.AddWithValue("@PhoneNumber", data.PhoneNumber);
+
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не добавлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void AddPosition (Position data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Position (ID, Name) VALUES (@ID, @Name);";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@Name", data.Name);
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не добавлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void AddProcedure (Procedure data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Procedure (ID, DoctorID, DiseaseRecordID, Description, DateStart, Duration, Cost) " +
+                                      "VALUES (@ID, @DoctorID, @DiseaseRecordID, @Description, @DateStart, @Duration, @Cost);";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@DoctorID", data.DoctorID);
+                command.Parameters.AddWithValue("@DiseaseRecordID", data.DiseaseRecordID);
+                command.Parameters.AddWithValue("@Description", data.Description);
+                command.Parameters.AddWithValue("@DateStart", data.DateStart);
+                command.Parameters.AddWithValue("@Duration", data.Duration);
+                command.Parameters.AddWithValue("@Cost", data.Cost);
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не добавлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void AddReceipt (Receipt data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Receipt (ID, Amount, DiseaseRecrodID, DatePayment) " +
+                                      "VALUES (@ID, @Amount, @DiseaseRecrodID, @DatePayment);";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@Amount", data.Amount);
+                command.Parameters.AddWithValue("@DiseaseRecrodID", data.DiseaseRecordID);
+                command.Parameters.AddWithValue("@DatePayment", data.DatePayment);
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не добавлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void AddStatus (Status data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "INSERT INTO Status (ID, Name) VALUES (@ID, @Name);";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@Name", data.Name);
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не добавлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    /// Удаление
+    public static void RemoveDisease(Disease data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+             
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Disease WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+     
+                var rowsCount = command.ExecuteNonQuery();
+     
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не удалены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void RemoveDiseaseRecord(DiseaseRecord data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+             
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM DiseaseRecord  WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+     
+                var rowsCount = command.ExecuteNonQuery();
+     
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не удалены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void RemoveDoctor(Doctor data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+             
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Doctor  WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+     
+                var rowsCount = command.ExecuteNonQuery();
+     
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не удалены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void RemovePatirnt(Patient data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+             
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Patient WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+     
+                var rowsCount = command.ExecuteNonQuery();
+     
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не удалены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void RemovePosition(Position data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+             
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Position WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+     
+                var rowsCount = command.ExecuteNonQuery();
+     
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не удалены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void RemoveProcedure(Procedure data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+             
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Procedure WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+     
+                var rowsCount = command.ExecuteNonQuery();
+     
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не удалены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void RemoveReceipt(Receipt data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+             
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Receipt WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+     
+                var rowsCount = command.ExecuteNonQuery();
+     
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не удалены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void RemoveStatus(Status data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+             
+            using (var command = connection.CreateCommand())
+            {
+                command.CommandText = "DELETE FROM Status WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+     
+                var rowsCount = command.ExecuteNonQuery();
+     
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не удалены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    /// Обновление
+    public static void UpdatePosition(Position data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+
+                command.CommandText = "UPDATE Position SET Name = @Name WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@Name", data.Name);
+
+                
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не Обновлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void UpdateStatus(Status data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+
+                command.CommandText = "UPDATE Status SET Name = @Name WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@Name", data.Name);
+                
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не Обновлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void UpdateDisease(Disease data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+
+                command.CommandText = "UPDATE Disease SET Name = @Name, DurationLiness = @DurationLiness WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@Name", data.Name);
+                command.Parameters.AddWithValue("@DurationLiness", data.DurationLiness);
+
+                
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не Обновлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void UpdatePatient(Patient data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+
+                command.CommandText = "UPDATE Patient SET FirstName = @FirstName, LastName = @LastName, Patronymic = @Patronymic, " +
+                                      "DateBirth = @DateBirth, PhoneNumber = @PhoneNumber WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@FirstName", data.FirstName);
+                command.Parameters.AddWithValue("@LastName", data.LastName);
+                command.Parameters.AddWithValue("@Patronymic", data.Patronymic);
+                command.Parameters.AddWithValue("@DateBirth", data.DateBirth);
+                command.Parameters.AddWithValue("@PhoneNumber", data.PhoneNumber);
+                
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не Обновлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void UpdateDoctor(Doctor data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+
+                command.CommandText = "UPDATE Doctor SET FirstName = @FirstName, LastName = @LastName, Patronymic = @Patronymic, " +
+                                      "EmploymentDate = @EmploymentDate, PositionID = @PositionID, Login = @Login, Password = @Password " +
+                                      "WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@FirstName", data.FirstName);
+                command.Parameters.AddWithValue("@LastName", data.LastName);
+                command.Parameters.AddWithValue("@Patronymic", data.Patronymic);
+                command.Parameters.AddWithValue("@EmploymentDate", data.EmploymentDate);
+                command.Parameters.AddWithValue("@PositionID", data.PositionID);
+                command.Parameters.AddWithValue("@Login", data.Login);
+                command.Parameters.AddWithValue("@Password", data.Password);
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не Обновлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void UpdateDiseaseRecord(DiseaseRecord data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+
+                command.CommandText = "UPDATE DiseaseRecord SET PatientID = @PatientID, FinalPrice = @FinalPrice, DateStart = @DateStart, " +
+                                      "DateEnd = @DateEnd, StatusID = @StatusID, AttendingDoctorID = @AttendingDoctorID, DiseaseID = @DiseaseID, " +
+                                      "FInalPrice = @FinalPrice WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@PatientID", data.PatientID);
+                command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice);
+                command.Parameters.AddWithValue("@DateStart", data.DateStart);
+                command.Parameters.AddWithValue("@DateEnd", data.DateEnd);
+                command.Parameters.AddWithValue("@StatusID", data.StatusID);
+                command.Parameters.AddWithValue("@AttendingDoctorID", data.AttendingDoctorID);
+                command.Parameters.AddWithValue("@DiseaseID", data.DiseaseID);
+                command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice);
+                
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не Обновлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void UpdateProcedure(Procedure data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+
+                command.CommandText = "UPDATE Procedure SET DoctorID = @DoctorID, DiseaseRecordID = @DiseaseRecordID, Description = @Description, " +
+                                      "DateStart = @DateStart, Duration = @Duration, Cost = @Cost WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@DoctorID", data.DoctorID);
+                command.Parameters.AddWithValue("@DiseaseRecordID", data.DiseaseRecordID);
+                command.Parameters.AddWithValue("@Description", data.Description);
+                command.Parameters.AddWithValue("@DateStart", data.DateStart);
+                command.Parameters.AddWithValue("@Duration", data.Duration);
+                command.Parameters.AddWithValue("@Cost", data.Cost);
+
+                
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не Обновлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
+    }
+    public static void UpdateReceipt(Receipt data)
+    {
+        using (var connection = new MySqlConnection(ConnectionString.ConnectionString))
+        {
+            connection.Open();
+        
+            using (var command = connection.CreateCommand())
+            {
+
+                command.CommandText = "UPDATE Receipt SET Amount = @Amount, DiseaseRecrodID = @DiseaseRecrodID, DatePayment = @DatePayment " +
+                                      "WHERE ID = @ID;";
+                command.Parameters.AddWithValue("@ID", data.Id);
+                command.Parameters.AddWithValue("@Amount", data.Amount);
+                command.Parameters.AddWithValue("@DiseaseRecrodID", data.DiseaseRecordID);
+                command.Parameters.AddWithValue("@DatePayment", data.DatePayment);
+                
+                var rowsCount = command.ExecuteNonQuery();
+
+                if (rowsCount == 0)
+                {
+                    MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не Обновлены",ButtonEnum.Ok).ShowAsync();;
+                }
+            }
+            connection.Close();
+        }
     }
 }
