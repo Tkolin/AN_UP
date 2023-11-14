@@ -25,11 +25,11 @@
                 <TextBlock Text="Описание:" />
                 <TextBox x:Name="TBoxDescription" Width="250" Height="50" MaxLines="10"/>
                 
-                <TextBlock Text="Дата проведения:" IsEnabled="False" />
+                <TextBlock Text="Дата проведения:"/>
                 <DatePicker x:Name="DPickerDateStart" Width="250" />
-                <TextBlock Text="Продолжительность:" IsEnabled="False"/>
+                <TextBlock Text="Продолжительность:"/>
                 <NumericUpDown x:Name="NUpDownDuration" Width="250"/>
-                <TextBlock Text="Стоимость:" IsEnabled="False"/>
+                <TextBlock Text="Стоимость:"/>
                 <NumericUpDown x:Name="NUpDownCost" Width="250"/>
                 <TextBlock Text="Статус:" IsEnabled="False"/>
                 <ComboBox x:Name="CBoxStatus" Width="250">

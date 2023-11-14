@@ -31,6 +31,7 @@ public partial class MenyWindow : Avalonia.Controls.Window
 
     public MenyWindow()
     {
+        InitializeComponent();
     }
 
     private void BtnDisease_OnClick(object? sender, RoutedEventArgs e)

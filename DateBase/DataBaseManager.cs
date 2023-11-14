@@ -308,9 +308,8 @@ public class DataBaseManager
             using (var command = connection.CreateCommand())
             {
                 command.CommandText =
-                    "INSERT INTO DiseaseRecord (ID, PatientID, FinalPrice, DateStart, DateEnd, StatusID, AttendingDoctorID, DiseaseID, FInalPrice) " +
-                    "VALUES (@ID, @PatientID, @FinalPrice, @DateStart, @DateEnd, @StatusID, @AttendingDoctorID, @DiseaseID, @FinalPrice);";
-                command.Parameters.AddWithValue("@ID", data.Id);
+                    "INSERT INTO DiseaseRecord ( PatientID, FinalPrice, DateStart, DateEnd, StatusID, AttendingDoctorID, DiseaseID, FInalPrice) " +
+                    "VALUES (@PatientID, @FinalPrice, @DateStart, @DateEnd, @StatusID, @AttendingDoctorID, @DiseaseID, @FinalPrice);";
                 command.Parameters.AddWithValue("@PatientID", data.PatientID);
                 command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice);
                 command.Parameters.AddWithValue("@DateStart", data.DateStart);

@@ -4773,24 +4773,34 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\TSystem\\.nuget\\packages\\": {}
+    "C:\\Users\\Grigoriy\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\TSystem\\RiderProjects\\AN_UP\\AN_UP.csproj",
+      "projectUniqueName": "C:\\Users\\Grigoriy\\YandexDisk\\!РАБОТА 2023\\1 Предмет\\Прога\\AN_UP\\AN_UP.csproj",
       "projectName": "AN_UP",
-      "projectPath": "C:\\Users\\TSystem\\RiderProjects\\AN_UP\\AN_UP.csproj",
-      "packagesPath": "C:\\Users\\TSystem\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\TSystem\\RiderProjects\\AN_UP\\obj\\",
+      "projectPath": "C:\\Users\\Grigoriy\\YandexDisk\\!РАБОТА 2023\\1 Предмет\\Прога\\AN_UP\\AN_UP.csproj",
+      "packagesPath": "C:\\Users\\Grigoriy\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Grigoriy\\YandexDisk\\!РАБОТА 2023\\1 Предмет\\Прога\\AN_UP\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\TSystem\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Grigoriy\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4854,7 +4864,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Users\\TSystem\\.dotnet\\sdk\\7.0.306\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.402\\RuntimeIdentifierGraph.json"
       }
     }
   }

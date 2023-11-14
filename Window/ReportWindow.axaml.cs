@@ -46,4 +46,19 @@ public partial class ReportWindow : Avalonia.Controls.Window
     {
         throw new System.NotImplementedException();
     }
+
+    private void BtnPatientClear_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void BtnDoctorClear_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
+
+    private void BtnStatusClear_OnClick(object? sender, RoutedEventArgs e)
+    {
+        throw new System.NotImplementedException();
+    }
 }

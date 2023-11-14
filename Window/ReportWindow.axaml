@@ -26,25 +26,32 @@
                     <DatePicker x:Name="DPicerStart"/>
                    <TextBlock Text="до:"/>
                     <DatePicker x:Name="DPicerEnd"/>
+                   <TextBlock Text="Необезательные фильтры" Margin="0,20,0,5"/>
                    
                    <TextBlock Text="Врач:"/>
-                   <ComboBox x:Name="CBoxDoctor">
-                       <ComboBox.Template>
-                           <ControlTemplate />
-                       </ComboBox.Template>
-                   </ComboBox>
+                   <StackPanel Orientation="Horizontal">
+                       <ComboBox x:Name="CBoxDoctor" Width="250"> 
+                       </ComboBox>
+                       <Button x:Name="BtnDoctorClear" Content="Сброс"
+                               Click="BtnDoctorClear_OnClick"/>
+                   </StackPanel>
                    <TextBlock Text="Пациент:"/>
-                   <ComboBox x:Name="CBoxPatient">
-                       <ComboBox.Template>
-                           <ControlTemplate />
-                       </ComboBox.Template>
-                   </ComboBox>
+                   <StackPanel Orientation="Horizontal">
+                       <ComboBox x:Name="CBoxPatient" Width="250"> 
+                       </ComboBox>
+                       <Button x:Name="BtnPatientClear" Content="Сброс" 
+                               Click="BtnPatientClear_OnClick"/>
+                   </StackPanel>
                    <TextBlock Text="Статус:"/>
-                   <ComboBox x:Name="CBoxStatus">
-                       <ComboBox.Template>
-                           <ControlTemplate />
-                       </ComboBox.Template>
-                   </ComboBox>
+                   <StackPanel Orientation="Horizontal">
+                       <ComboBox x:Name="CBoxStatus" Width="250">
+                             </ComboBox>
+                       <Button x:Name="BtnStatusClear" Content="Сброс"
+                               Click="BtnStatusClear_OnClick"/> 
+
+                   </StackPanel>
+            
+                   
                 </StackPanel>
      
 

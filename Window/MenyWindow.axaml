@@ -2,28 +2,22 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" 
+        MinHeight="800" MaxHeight="800"
+        MinWidth="800" MaxWidth="800"
         x:Class="AN_UP.Window.MenyWindow"
         Title="Меню">
-                 <StackPanel 
-                        Orientation="Vertical" VerticalAlignment="Center"
-                        HorizontalAlignment="Center">
-                        <TextBlock 
-                                Margin="20"  HorizontalAlignment="Center"
-                                Text="МЕНЮ"
-                                FontSize="30"/>
-
-                        <Button x:Name="BtnDisease" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
-                                Content="Список больных"
-                                Click="BtnDisease_OnClick"/>
-                        <Button x:Name="BtnProcedure" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
-                                Content="Список процедур график работы"
-                                Click="BtnProcedure_OnClick"/>
-                        <Button x:Name="BtnReports" Margin="4" Width="200" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
-                                Content="Создание отчёта"
-                                Click="BtnReports_OnClick"/>
-                        <Button x:Name="BtnBack" Margin="4" Width="100" HorizontalContentAlignment="Center" HorizontalAlignment="Center"
-                                Content="Назад"
-                                Click="BtnBack_OnClick"/>
+                 <StackPanel>
+                     <TextBlock 
+                         Margin="20"  HorizontalAlignment="Center"
+                         Text="МЕНЮ" FontSize="30" VerticalAlignment="Center"/>
+                     <Button  Margin="4" Width="300"  HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                              x:Name="BtnDisease" Content="Список больных" Click="BtnDisease_OnClick"/>
+                     <Button Margin="4" Width="300"  HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                             x:Name="BtnProcedure" Content="Список процедур график работы" Click="BtnProcedure_OnClick"/>
+                     <Button  Margin="4" Width="300"  HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                              x:Name="BtnReports" Content="Создание отчёта" Click="BtnReports_OnClick"/>
+                     <Button  Margin="4" Width="100"  HorizontalAlignment="Center" HorizontalContentAlignment="Center"
+                              x:Name="BtnBack" Content="Назад" Click="BtnBack_OnClick"/>
                 </StackPanel>
 </Window>
