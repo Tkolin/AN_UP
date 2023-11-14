@@ -21,7 +21,10 @@ C:\Users\TSystem\.nuget\packages\avalonia.themes.fluent\11.0.2\lib\net6.0\Avalon
 C:\Users\TSystem\.nuget\packages\avalonia.themes.simple\11.0.2\lib\net6.0\Avalonia.Themes.Simple.dll
 C:\Users\TSystem\.nuget\packages\avalonia.win32\11.0.2\lib\net6.0\Avalonia.Win32.dll
 C:\Users\TSystem\.nuget\packages\avalonia.x11\11.0.2\lib\net6.0\Avalonia.X11.dll
+C:\Users\TSystem\.nuget\packages\colortextblock.avalonia\11.0.0-d1\lib\net6.0\ColorTextBlock.Avalonia.dll
+C:\Users\TSystem\.nuget\packages\dialoghost.avalonia\0.7.5\lib\netstandard2.0\DialogHost.Avalonia.dll
 C:\Users\TSystem\.nuget\packages\harfbuzzsharp\2.8.2.3\lib\net6.0\HarfBuzzSharp.dll
+C:\Users\TSystem\.nuget\packages\markdown.avalonia.tight\11.0.0-d1\lib\net6.0\Markdown.Avalonia.dll
 C:\Users\TSystem\.nuget\packages\microcom.runtime\0.11.0\lib\net5.0\MicroCom.Runtime.dll
 C:\Users\TSystem\.nuget\packages\microsoft.codeanalysis.csharp\3.8.0\lib\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.dll
 C:\Users\TSystem\.nuget\packages\microsoft.codeanalysis.csharp.scripting\3.8.0\lib\netcoreapp3.1\Microsoft.CodeAnalysis.CSharp.Scripting.dll
@@ -34,6 +37,7 @@ C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\Micros
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\Microsoft.Win32.Primitives.dll
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\Microsoft.Win32.Registry.dll
 C:\Users\TSystem\.nuget\packages\microsoft.win32.systemevents\6.0.0\lib\net6.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\TSystem\.nuget\packages\messagebox.avalonia\3.0.0\lib\netstandard2.0\MsBox.Avalonia.dll
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\mscorlib.dll
 C:\Users\TSystem\.nuget\packages\mysqlconnector\2.3.0-beta.4\lib\net7.0\MySqlConnector.dll
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\netstandard.dll
@@ -120,6 +124,7 @@ C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\System
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\System.Numerics.dll
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\System.Numerics.Vectors.dll
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\System.ObjectModel.dll
+C:\Users\TSystem\.nuget\packages\system.reactive\6.0.0\lib\net6.0\System.Reactive.dll
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\System.Reflection.DispatchProxy.dll
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\System.Reflection.dll
 C:\Users\TSystem\.dotnet\packs\Microsoft.NETCore.App.Ref\7.0.9\ref\net7.0\System.Reflection.Emit.dll
