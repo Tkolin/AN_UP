@@ -336,6 +336,20 @@
           }
         }
       },
+      "AvaloniaUI.PrintToPDF/0.3.0": {
+        "type": "package",
+        "dependencies": {
+          "Avalonia": "0.10.0",
+          "Avalonia.Skia": "0.10.0",
+          "SkiaSharp": "2.80.2"
+        },
+        "compile": {
+          "lib/netstandard2.1/AvaloniaUI.PrintToPDF.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.1/AvaloniaUI.PrintToPDF.dll": {}
+        }
+      },
       "ColorTextBlock.Avalonia/11.0.0-d1": {
         "type": "package",
         "dependencies": {
@@ -1907,6 +1921,18 @@
         "lib/net6.0/Avalonia.X11.xml",
         "lib/netstandard2.0/Avalonia.X11.dll",
         "lib/netstandard2.0/Avalonia.X11.xml"
+      ]
+    },
+    "AvaloniaUI.PrintToPDF/0.3.0": {
+      "sha512": "wNd99Vjy0YhbFIVmZ45KoblwCMjNthgnlemHCdb7hSNAlv7a6GOpKRMa91OEkMHvNUHvzb4wYAIE5kZb1Edh5Q==",
+      "type": "package",
+      "path": "avaloniaui.printtopdf/0.3.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "avaloniaui.printtopdf.0.3.0.nupkg.sha512",
+        "avaloniaui.printtopdf.nuspec",
+        "lib/netstandard2.1/AvaloniaUI.PrintToPDF.dll"
       ]
     },
     "ColorTextBlock.Avalonia/11.0.0-d1": {
@@ -4768,6 +4794,7 @@
       "Avalonia.Diagnostics >= 11.0.2",
       "Avalonia.Fonts.Inter >= 11.0.2",
       "Avalonia.Themes.Fluent >= 11.0.2",
+      "AvaloniaUI.PrintToPDF >= 0.3.0",
       "MessageBox.Avalonia >= 3.0.0",
       "MySqlConnector >= 2.3.0-beta.4"
     ]
@@ -4828,6 +4855,10 @@
           "Avalonia.Themes.Fluent": {
             "target": "Package",
             "version": "[11.0.2, )"
+          },
+          "AvaloniaUI.PrintToPDF": {
+            "target": "Package",
+            "version": "[0.3.0, )"
           },
           "MessageBox.Avalonia": {
             "target": "Package",

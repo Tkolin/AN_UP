@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "oHyD+hR1WBEZdaSKsTfBfQsgEzhEx6S70V0Oy1tXLiNHZ8mMUZYt6ysaiI1WNlC1i6m6NjFJN9sf+1XliMfIJQ==",
+  "dgSpecHash": "ZcNBOnvXhTh1WgIELNTYGNp8+L2pCKyGUmZKdgbeeguObpEJHerpby9ZAOlUbeMkdI6GC2Prn3cKDskmjtJbwA==",
   "success": true,
   "projectFilePath": "C:\\Users\\TSystem\\RiderProjects\\AN_UP\\AN_UP.csproj",
   "expectedPackageFiles": [
@@ -20,6 +20,7 @@
     "C:\\Users\\TSystem\\.nuget\\packages\\avalonia.themes.simple\\11.0.2\\avalonia.themes.simple.11.0.2.nupkg.sha512",
     "C:\\Users\\TSystem\\.nuget\\packages\\avalonia.win32\\11.0.2\\avalonia.win32.11.0.2.nupkg.sha512",
     "C:\\Users\\TSystem\\.nuget\\packages\\avalonia.x11\\11.0.2\\avalonia.x11.11.0.2.nupkg.sha512",
+    "C:\\Users\\TSystem\\.nuget\\packages\\avaloniaui.printtopdf\\0.3.0\\avaloniaui.printtopdf.0.3.0.nupkg.sha512",
     "C:\\Users\\TSystem\\.nuget\\packages\\colortextblock.avalonia\\11.0.0-d1\\colortextblock.avalonia.11.0.0-d1.nupkg.sha512",
     "C:\\Users\\TSystem\\.nuget\\packages\\dialoghost.avalonia\\0.7.5\\dialoghost.avalonia.0.7.5.nupkg.sha512",
     "C:\\Users\\TSystem\\.nuget\\packages\\harfbuzzsharp\\2.8.2.3\\harfbuzzsharp.2.8.2.3.nupkg.sha512",

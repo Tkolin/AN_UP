@@ -58,6 +58,10 @@
               "target": "Package",
               "version": "[11.0.2, )"
             },
+            "AvaloniaUI.PrintToPDF": {
+              "target": "Package",
+              "version": "[0.3.0, )"
+            },
             "MessageBox.Avalonia": {
               "target": "Package",
               "version": "[3.0.0, )"
