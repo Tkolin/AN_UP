@@ -10,7 +10,7 @@
      <Grid ShowGridLines="True" ColumnDefinitions="1*,0.6*">
 
          <Grid Grid.Column="0">
-             <Grid ShowGridLines="True" Margin="0,30,0,0"
+             <Grid ShowGridLines="False" Margin="0,30,0,0"
                    ColumnDefinitions="*,*" RowDefinitions="1*,10*,0.5*">
                  
                  <TextBlock FontSize="30" Text="Отчёт" HorizontalAlignment="Right"/>
@@ -62,14 +62,32 @@
                    
                    <TextBlock Text="Врач:"/>
                    <StackPanel Orientation="Horizontal">
-                       <ComboBox x:Name="CBoxDoctor" Width="250"> 
+                       <ComboBox x:Name="CBoxDoctor" Width="250">
+                           <ComboBox.ItemTemplate>
+                               <DataTemplate x:DataType="models:Doctor">
+                                   <StackPanel Orientation="Horizontal">
+                                       <TextBlock Text="{Binding FirstName}"/>
+                                       <TextBlock Text="{Binding LastName}"/> 
+                                       <TextBlock Text="{Binding Patronymic}"/> 
+                                   </StackPanel>
+                               </DataTemplate>
+                           </ComboBox.ItemTemplate>  
                        </ComboBox>
                        <Button x:Name="BtnDoctorClear" Content="Сброс"
                                Click="BtnDoctorClear_OnClick"/>
                    </StackPanel>
                    <TextBlock Text="Пациент:"/>
                    <StackPanel Orientation="Horizontal">
-                       <ComboBox x:Name="CBoxPatient" Width="250"> 
+                       <ComboBox x:Name="CBoxPatient" Width="250">
+                           <ComboBox.ItemTemplate>
+                               <DataTemplate x:DataType="models:Patient">
+                                   <StackPanel Orientation="Horizontal">
+                                       <TextBlock Text="{Binding FirstName}"/>
+                                       <TextBlock Text="{Binding LastName}"/> 
+                                       <TextBlock Text="{Binding Patronymic}"/> 
+                                   </StackPanel>
+                               </DataTemplate>
+                           </ComboBox.ItemTemplate> 
                        </ComboBox>
                        <Button x:Name="BtnPatientClear" Content="Сброс" 
                                Click="BtnPatientClear_OnClick"/>
@@ -77,7 +95,14 @@
                    <TextBlock Text="Статус:"/>
                    <StackPanel Orientation="Horizontal">
                        <ComboBox x:Name="CBoxStatus" Width="250">
-                             </ComboBox>
+                           <ComboBox.ItemTemplate>
+                               <DataTemplate x:DataType="models:Status">
+                                  
+                                       <TextBlock Text="{Binding Name}"/>
+            
+                               </DataTemplate>
+                           </ComboBox.ItemTemplate> 
+                       </ComboBox>
                        <Button x:Name="BtnStatusClear" Content="Сброс"
                                Click="BtnStatusClear_OnClick"/> 
 

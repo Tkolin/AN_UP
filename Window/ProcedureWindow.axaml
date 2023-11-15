@@ -4,7 +4,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" 
         xmlns:models="clr-namespace:AN_UP.DateBase"
-        MinHeight="600" MinWidth = "1200"  MaxHeight="600" MaxWidth = "1200" 
+        MinHeight="600" MinWidth = "1600"  MaxHeight="600" MaxWidth = "1600"
         x:Class="AN_UP.Window.ProcedureWindow"
         Title="График процедур">
  <Grid ShowGridLines="True" ColumnDefinitions="1*,0.6*">
@@ -35,8 +35,8 @@
                      
                 <TextBlock Text="Поиск:" Margin="0,0,0,10"  HorizontalAlignment="Center"/>
              
-                <TextBox x:Name="SearchBox" 
-                         Margin="5"
+                <TextBox x:Name="SearchBox"  TextChanged="SearchBox_OnTextChanged"
+                         Margin="5" Text=""
                          Width="250"/>
                 <Button x:Name="ResetBtn"
                         Click="ResetBtn_OnClick"
@@ -64,13 +64,21 @@
                 <TextBlock Text="Врач:"/>
                 <ComboBox x:Name="CBoxAttendingDoctor" Width="250">
                     <ComboBox.ItemTemplate>
-                       
+                        <DataTemplate x:DataType="models:Doctor">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding FirstName}"/>
+                                <TextBlock Text="{Binding LastName}"/> 
+                                <TextBlock Text="{Binding Patronymic}"/> 
+                            </StackPanel>
+                        </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <TextBlock Text="Пациент:"/>
                 <ComboBox x:Name="CBoxDisiaseRecord" Width="250">
                     <ComboBox.ItemTemplate>
-                       
+                        <DataTemplate x:DataType="models:DiseaseRecord">
+                            <TextBlock Text="{Binding Id}"/>
+                        </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <TextBlock Text="Описание:" />
@@ -85,7 +93,13 @@
                 <TextBlock Text="Статус:" IsEnabled="False"/>
                 <ComboBox x:Name="CBoxStatus" Width="250">
                     <ComboBox.ItemTemplate>
-                       
+                        <DataTemplate x:DataType="models:Patient">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="{Binding FirstName}"/>
+                                <TextBlock Text="{Binding LastName}"/> 
+                                <TextBlock Text="{Binding Patronymic}"/> 
+                            </StackPanel>
+                        </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 

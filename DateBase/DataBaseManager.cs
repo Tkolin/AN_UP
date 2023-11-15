@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
 using MsBox.Avalonia;
 using MsBox.Avalonia.Enums;
 using MySqlConnector;
@@ -12,7 +14,7 @@ public class DataBaseManager
         new MySqlConnectionStringBuilder
         {
             Server = "localhost",
-            Database = "mdk",
+            Database = "up_an",
             UserID = "root",
             Password = "tkl909" // "tkl909"//"nrjkby99"
         };
@@ -188,23 +190,33 @@ public class DataBaseManager
             connection.Open();
             using (var comand = connection.CreateCommand())
             {
-                comand.CommandText = "SELECT * FROM Procedure";
+                comand.CommandText = "SELECT * FROM procedurepatient";
                 using (var reader = comand.ExecuteReader())
                 {
                     while (reader.Read())
                     {
-                        data.Add(
-                            new Procedure(
-                                reader.GetInt32("ID"),
-                                reader.GetInt32("DoctorID"),
-                                reader.GetInt32("DiseaseRecordID"),
-                                reader.GetString("Description"),
-                                reader.GetDateTime("DateStart"),
-                                reader.GetInt32("Duration"),
-                                reader.GetDecimal("Cost"),
-                                reader.GetInt32("StatusId")
-                            )
-                        );
+                        int doctorId = reader.IsDBNull("DoctorID") ? 0 : reader.GetInt32("DoctorID");
+                        int diseaseRecordId =
+                            reader.IsDBNull("DiseaseRecordID") ? 0 : reader.GetInt32("DiseaseRecordID");
+                        string description = reader.IsDBNull("Description")
+                            ? string.Empty
+                            : reader.GetString("Description");
+                        DateTime dateStart = reader.IsDBNull("DateStart")
+                            ? DateTime.MinValue
+                            : reader.GetDateTime("DateStart");
+                        int duration = reader.IsDBNull("Duration") ? 0 : reader.GetInt32("Duration");
+                        decimal cost = reader.IsDBNull("Cost") ? 0 : reader.GetDecimal("Cost");
+                        int statusId = reader.IsDBNull("StatusId") ? 0 : reader.GetInt32("StatusId");
+                        data.Add(new Procedure(
+                            reader.GetInt32("ID"),
+                            doctorId,
+                            diseaseRecordId,
+                            description,
+                            dateStart,
+                            duration,
+                            cost,
+                            statusId
+                        ));
                     }
                 }
             }
@@ -308,25 +320,21 @@ public class DataBaseManager
             using (var command = connection.CreateCommand())
             {
                 command.CommandText =
-                    "INSERT INTO DiseaseRecord ( PatientID, FinalPrice, DateStart, DateEnd, StatusID, AttendingDoctorID, DiseaseID, FInalPrice) " +
-                    "VALUES (@PatientID, @FinalPrice, @DateStart, @DateEnd, @StatusID, @AttendingDoctorID, @DiseaseID, @FinalPrice);";
+                    "INSERT INTO DiseaseRecord (PatientID, FinalPrice, DateStart, DateEnd, StatusID, AttendingDoctorID, DiseaseID) " +
+                    "VALUES (@PatientID, @FinalPrice, @DateStart, @DateEnd, @StatusID, @AttendingDoctorID, @DiseaseID);";
                 command.Parameters.AddWithValue("@PatientID", data.PatientID);
-                command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice);
+                command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice.ToString("#.##"));
                 command.Parameters.AddWithValue("@DateStart", data.DateStart);
                 command.Parameters.AddWithValue("@DateEnd", data.DateEnd);
                 command.Parameters.AddWithValue("@StatusID", data.StatusID);
                 command.Parameters.AddWithValue("@AttendingDoctorID", data.AttendingDoctorID);
                 command.Parameters.AddWithValue("@DiseaseID", data.DiseaseID);
-                command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice);
                 var rowsCount = command.ExecuteNonQuery();
                 if (rowsCount == 0)
                 {
                     MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не добавлены", ButtonEnum.Ok).ShowAsync();
-                    ;
                 }
             }
-
-            connection.Close();
         }
     }
 
@@ -793,8 +801,8 @@ public class DataBaseManager
             {
                 command.CommandText =
                     "UPDATE DiseaseRecord SET PatientID = @PatientID, FinalPrice = @FinalPrice, DateStart = @DateStart, " +
-                    "DateEnd = @DateEnd, StatusID = @StatusID, AttendingDoctorID = @AttendingDoctorID, DiseaseID = @DiseaseID, " +
-                    "FInalPrice = @FinalPrice WHERE ID = @ID;";
+                    "DateEnd = @DateEnd, StatusID = @StatusID, AttendingDoctorID = @AttendingDoctorID, DiseaseID = @DiseaseID " +
+                    " WHERE ID = @ID;";
                 command.Parameters.AddWithValue("@ID", data.Id);
                 command.Parameters.AddWithValue("@PatientID", data.PatientID);
                 command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice);
@@ -803,7 +811,6 @@ public class DataBaseManager
                 command.Parameters.AddWithValue("@StatusID", data.StatusID);
                 command.Parameters.AddWithValue("@AttendingDoctorID", data.AttendingDoctorID);
                 command.Parameters.AddWithValue("@DiseaseID", data.DiseaseID);
-                command.Parameters.AddWithValue("@FinalPrice", data.FinalPrice);
                 var rowsCount = command.ExecuteNonQuery();
                 if (rowsCount == 0)
                 {
