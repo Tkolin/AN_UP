@@ -1,6 +1,6 @@
 ﻿create table disease
 (
-    ID             int          not null
+    ID             int   auto_increment       not null
         primary key,
     Name           varchar(255) null,
     DurationLiness int          null
@@ -8,7 +8,7 @@
 
 create table patient
 (
-    ID          int          not null
+    ID          int       auto_increment   not null
         primary key,
     FirstName   varchar(255) null,
     LastName    varchar(255) null,
@@ -19,14 +19,14 @@ create table patient
 
 create table position
 (
-    ID   int          not null
+    ID   int      auto_increment    not null
         primary key,
     Name varchar(255) null
 );
 
 create table doctor
 (
-    ID             int          not null
+    ID             int    auto_increment      not null
         primary key,
     FirstName      varchar(255) null,
     LastName       varchar(255) null,
@@ -48,7 +48,7 @@ create table status
 
 create table diseaserecord
 (
-    ID                int            not null
+    ID                int     auto_increment       not null
         primary key,
     PatientID         int            null,
     FinalPrice        decimal(10, 2) null,
@@ -69,7 +69,7 @@ create table diseaserecord
 
 create table procedurepatient
 (
-    ID              int            not null
+    ID              int     auto_increment       not null
         primary key,
     DoctorID        int            null,
     DiseaseRecordID int            null,
@@ -88,7 +88,7 @@ create table procedurepatient
 
 create table receipt
 (
-    ID              int            not null
+    ID              int    auto_increment        not null
         primary key,
     Amount          decimal(10, 2) null,
     DiseaseRecordID int            null,

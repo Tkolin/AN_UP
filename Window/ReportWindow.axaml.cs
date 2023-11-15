@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AN_UP.DateBase;
 using Avalonia;
 using Avalonia.Controls;
@@ -24,15 +26,29 @@ public partial class ReportWindow : Avalonia.Controls.Window
         _StatusList = DataBaseManager.GetStatusList();
         _DoctorsList = DataBaseManager.GetDoctors();
         _PatientsList = DataBaseManager.GetPatients();
-        CBoxStatus.SelectedItem = _StatusList;
-        CBoxDoctor.SelectedItem = _DoctorsList;
-        CBoxPatient.SelectedItem = _PatientsList;
+        CBoxStatus.ItemsSource = _StatusList;
+        CBoxDoctor.ItemsSource = _DoctorsList;
+        CBoxPatient.ItemsSource = _PatientsList;
     }
 
     private void GenerateReport()
     {
-        List<Procedure> procedures = DataBaseManager.GetProcedures();
+        // Стартовые переменные
         decimal price = 0;
+        List<Procedure> procedures = DataBaseManager.GetProcedures();
+
+        // Отчистка формы
+        ClearReportForm();
+
+        // Фильрация по ComboBox
+        if (CBoxDoctor.SelectedItem != null)
+            procedures = procedures.Where(c => c.DoctorID == (CBoxDoctor.SelectedItem as Doctor).Id).ToList();
+        if (CBoxPatient.SelectedItem != null)
+            procedures = procedures.Where(c => c.DoctorID == (CBoxPatient.SelectedItem as Patient).Id).ToList();
+        if (CBoxStatus.SelectedItem != null)
+            procedures = procedures.Where(c => c.DoctorID == (CBoxStatus.SelectedItem as Status).Id).ToList();
+
+        // Проверка периода
         if (CBoxPatient.SelectedItem == null)
             TBoxPatient.Text = "Все";
         else
@@ -47,16 +63,40 @@ public partial class ReportWindow : Avalonia.Controls.Window
             TBoxStatus.Text = "Все";
         else
             TBoxStatus.Text = (CBoxStatus.SelectedItem as Status).Name;
+        if (DPicerStart.SelectedDate == null)
+            DPicerStart.SelectedDate = DateTime.Today.AddYears(-1);
+        if (DPicerEnd.SelectedDate == null)
+            DPicerEnd.SelectedDate = DateTime.Now;
+        if (DPicerEnd.SelectedDate != null && DPicerStart.SelectedDate == null)
+            DPicerStart.SelectedDate = DPicerEnd.SelectedDate.Value.Date.AddYears(-1);
+        if (DPicerEnd.SelectedDate > DPicerStart.SelectedDate)
+        {
+            DateTime cash = DPicerEnd.SelectedDate.Value.Date;
+            DPicerEnd.SelectedDate = DPicerStart.SelectedDate;
+            DPicerStart.SelectedDate = cash;
+        }
+
         TBoxCountProcedure.Text = procedures.Count.ToString();
         TBoxDateSelected.Text =
             DPicerStart.SelectedDate.Value.ToString() + " - " + DPicerEnd.SelectedDate.Value.ToString();
         foreach (Procedure value in procedures)
         {
-            TBoxProcedureList.Text += value.Id + " | " + value.DateStart.Date + " | " + value.Cost.ToString();
+            TBoxProcedureList.Text += value.Id + " | " + value.DateStart.Date + " | " + value.Cost.ToString() + "\n";
             price += value.Cost;
         }
 
         TBoxPrice.Text = price.ToString();
+    }
+
+    private void ClearReportForm()
+    {
+        TBoxDoctor.Text = "";
+        TBoxProcedureList.Text = "";
+        TBoxPrice.Text = "";
+        TBoxPatient.Text = "";
+        TBoxCountProcedure.Text = "";
+        TBoxDateSelected.Text = "";
+        TBoxStatus.Text = "";
     }
 
     private void BtnPatientClear_OnClick(object? sender, RoutedEventArgs e)
@@ -79,6 +119,7 @@ public partial class ReportWindow : Avalonia.Controls.Window
         CBoxPatient.SelectedItem = null;
         CBoxDoctor.SelectedItem = null;
         CBoxStatus.SelectedItem = null;
+        ClearReportForm();
     }
 
     private void BtnGenerate_OnClick(object? sender, RoutedEventArgs e)
@@ -89,7 +130,5 @@ public partial class ReportWindow : Avalonia.Controls.Window
     private void BtnGoPrint_OnClick(object? sender, RoutedEventArgs e)
     {
         GenerateReport();
-
-        //Метод печати формы
     }
 }

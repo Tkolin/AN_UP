@@ -74,7 +74,7 @@
                     </ComboBox.ItemTemplate>
                 </ComboBox>
                 <TextBlock Text="Пациент:"/>
-                <ComboBox x:Name="CBoxDisiaseRecord" Width="250">
+                <ComboBox x:Name="CBoxDisiaseRecord" Width="250" >
                     <ComboBox.ItemTemplate>
                         <DataTemplate x:DataType="models:DiseaseRecord">
                             <TextBlock Text="{Binding Id}"/>
@@ -87,18 +87,14 @@
                 <TextBlock Text="Дата проведения:" IsEnabled="False" />
                 <DatePicker x:Name="DPickerDateStart" Width="250" />
                 <TextBlock Text="Продолжительность:" IsEnabled="False"/>
-                <NumericUpDown x:Name="NUpDownDuration" Width="250"/>
+                <NumericUpDown x:Name="NUpDownDuration" Width="250" Increment="1"/>
                 <TextBlock Text="Стоимость:" IsEnabled="False"/>
                 <NumericUpDown x:Name="NUpDownCost" Width="250"/>
                 <TextBlock Text="Статус:" IsEnabled="False"/>
                 <ComboBox x:Name="CBoxStatus" Width="250">
                     <ComboBox.ItemTemplate>
-                        <DataTemplate x:DataType="models:Patient">
-                            <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="{Binding FirstName}"/>
-                                <TextBlock Text="{Binding LastName}"/> 
-                                <TextBlock Text="{Binding Patronymic}"/> 
-                            </StackPanel>
+                        <DataTemplate x:DataType="models:Status">
+                                <TextBlock Text="{Binding Name}"/> 
                         </DataTemplate>
                     </ComboBox.ItemTemplate>
                 </ComboBox>

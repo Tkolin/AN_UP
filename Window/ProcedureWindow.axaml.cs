@@ -63,6 +63,10 @@ public partial class ProcedureWindow : Avalonia.Controls.Window
     {
         if (DataGrid.SelectedItem == null)
         {
+            CBoxAttendingDoctor.IsEnabled = true;
+            CBoxDisiaseRecord.IsEnabled = true;
+            DPickerDateStart.IsEnabled = true;
+            NUpDownCost.IsEnabled = true;
             CBoxAttendingDoctor.SelectedItem = null;
             CBoxDisiaseRecord.SelectedItem = null;
             TBoxDescription.Text = "";
@@ -73,14 +77,19 @@ public partial class ProcedureWindow : Avalonia.Controls.Window
         }
         else
         {
+            CBoxAttendingDoctor.IsEnabled = false;
+            CBoxDisiaseRecord.IsEnabled = false;
+            DPickerDateStart.IsEnabled = false;
+            NUpDownCost.IsEnabled = false;
             Procedure value = DataGrid.SelectedItem as Procedure;
-            CBoxAttendingDoctor.SelectedItem = _DoctorList.Where(c => c.Id == value.DoctorID);
-            CBoxDisiaseRecord.SelectedItem = _PatientDisesList.Where(c => c.Id == value.DiseaseRecordID);
+            CBoxAttendingDoctor.SelectedItem = _DoctorList.Where(c => c.Id == value.DoctorID).FirstOrDefault();
+            CBoxDisiaseRecord.SelectedItem =
+                _PatientDisesList.Where(c => c.Id == value.DiseaseRecordID).FirstOrDefault();
             TBoxDescription.Text = value.Description;
             DPickerDateStart.SelectedDate = value.DateStart;
             NUpDownDuration.Value = value.Duration;
             NUpDownCost.Value = value.Cost;
-            CBoxStatus.SelectedItem = _StatusList.Where(c => c.Id == value.StatusID);
+            CBoxStatus.SelectedItem = _StatusList.Where(c => c.Id == value.StatusID).FirstOrDefault();
         }
     }
 
@@ -93,7 +102,7 @@ public partial class ProcedureWindow : Avalonia.Controls.Window
     {
         if (DataGrid.SelectedItem == null)
             return;
-        DataBaseManager.RemoveDiseaseRecord(DataGrid.SelectedItem as DiseaseRecord);
+        DataBaseManager.RemoveProcedure(DataGrid.SelectedItem as Procedure);
         DownloadDataGrid();
     }
 
@@ -106,10 +115,10 @@ public partial class ProcedureWindow : Avalonia.Controls.Window
     {
         if (CBoxAttendingDoctor.SelectedItem == null ||
             CBoxDisiaseRecord.SelectedItem == null ||
-            TBoxDescription.Text.Length >= 1 ||
+            TBoxDescription.Text.Length <= 1 ||
             DPickerDateStart.SelectedDate == null ||
-            NUpDownDuration.Value == null ||
-            NUpDownCost.Value == null ||
+            NUpDownDuration.Value == 0 ||
+            NUpDownCost.Value == 0 ||
             CBoxStatus.SelectedItem == null)
         {
             MessageBoxManager.GetMessageBoxStandard("Ошибка", "Данные не заполнены", ButtonEnum.Ok).ShowAsync();
@@ -120,12 +129,12 @@ public partial class ProcedureWindow : Avalonia.Controls.Window
         {
             DataBaseManager.AddProcedure(new Procedure(
                 0,
-                (CBoxDisiaseRecord.SelectedItem as Doctor).Id,
+                (CBoxAttendingDoctor.SelectedItem as Doctor).Id,
                 (CBoxDisiaseRecord.SelectedItem as DiseaseRecord).Id,
                 TBoxDescription.Text,
                 DPickerDateStart.SelectedDate.Value.Date,
                 Convert.ToInt32(NUpDownDuration.Value.Value),
-                NUpDownCost.Value.Value,
+                Convert.ToDecimal(NUpDownCost.Value.Value),
                 (CBoxStatus.SelectedItem as Status).Id
             ));
         }
@@ -133,12 +142,12 @@ public partial class ProcedureWindow : Avalonia.Controls.Window
         {
             DataBaseManager.UpdateProcedure(new Procedure(
                 ((Procedure)DataGrid.SelectedItem).Id,
-                (CBoxDisiaseRecord.SelectedItem as Doctor).Id,
+                (CBoxAttendingDoctor.SelectedItem as Doctor).Id,
                 (CBoxDisiaseRecord.SelectedItem as DiseaseRecord).Id,
                 TBoxDescription.Text,
                 DPickerDateStart.SelectedDate.Value.Date,
                 Convert.ToInt32(NUpDownDuration.Value.Value),
-                NUpDownCost.Value.Value,
+                Convert.ToDecimal(NUpDownCost.Value.Value),
                 (CBoxStatus.SelectedItem as Status).Id
             ));
         }
@@ -150,10 +159,9 @@ public partial class ProcedureWindow : Avalonia.Controls.Window
     {
         if (DataGrid.SelectedItem == null)
             return;
-        DiseaseRecord diseaseRecord = DataGrid.SelectedItem as DiseaseRecord;
-        diseaseRecord.StatusID = 4;
-        diseaseRecord.DateEnd = DateTime.Now;
-        DataBaseManager.UpdateDiseaseRecord(diseaseRecord);
+        Procedure procedure = DataGrid.SelectedItem as Procedure;
+        procedure.StatusID = 4;
+        DataBaseManager.UpdateProcedure(procedure);
         DownloadDataGrid();
     }
 

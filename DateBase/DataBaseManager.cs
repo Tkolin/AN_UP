@@ -426,7 +426,7 @@ public class DataBaseManager
             using (var command = connection.CreateCommand())
             {
                 command.CommandText =
-                    "INSERT INTO Procedure (ID, DoctorID, DiseaseRecordID, Description, DateStart, Duration, Cost, StatusID) " +
+                    "INSERT INTO procedurepatient (ID, DoctorID, DiseaseRecordID, Description, DateStart, Duration, Cost, StatusID) " +
                     "VALUES (@ID, @DoctorID, @DiseaseRecordID, @Description, @DateStart, @Duration, @Cost, @StatusID);";
                 command.Parameters.AddWithValue("@ID", data.Id);
                 command.Parameters.AddWithValue("@DoctorID", data.DoctorID);
@@ -608,7 +608,7 @@ public class DataBaseManager
             connection.Open();
             using (var command = connection.CreateCommand())
             {
-                command.CommandText = "DELETE FROM Procedure WHERE ID = @ID;";
+                command.CommandText = "DELETE FROM procedurepatient WHERE ID = @ID;";
                 command.Parameters.AddWithValue("@ID", data.Id);
                 var rowsCount = command.ExecuteNonQuery();
                 if (rowsCount == 0)
@@ -831,7 +831,7 @@ public class DataBaseManager
             using (var command = connection.CreateCommand())
             {
                 command.CommandText =
-                    "UPDATE Procedure SET DoctorID = @DoctorID, DiseaseRecordID = @DiseaseRecordID, Description = @Description, " +
+                    "UPDATE procedurepatient SET DoctorID = @DoctorID, DiseaseRecordID = @DiseaseRecordID, Description = @Description, " +
                     "DateStart = @DateStart, Duration = @Duration, Cost = @Cost, StatusID = @StatusID WHERE ID = @ID;";
                 command.Parameters.AddWithValue("@ID", data.Id);
                 command.Parameters.AddWithValue("@DoctorID", data.DoctorID);

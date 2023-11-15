@@ -77,13 +77,13 @@ public partial class PacientDiseaseWindow : Avalonia.Controls.Window
         else
         {
             DiseaseRecord value = DataGrid.SelectedItem as DiseaseRecord;
-            CBoxPatient.SelectedItem = _PatientList.Where(c => value.PatientID == c.Id).First();
+            CBoxPatient.SelectedItem = _PatientList.Where(c => value.PatientID == c.Id).FirstOrDefault();
             NUpDownFinalPrice.Value = value.FinalPrice;
             DPickerDateStart.SelectedDate = value.DateStart;
             DPickerDateEnd.SelectedDate = value.DateEnd;
-            CBoxStatus.SelectedItem = _StatusList.Where(c => value.StatusID == c.Id).First();
-            CBoxDisease.SelectedItem = _DiseaseList.Where(c => value.DiseaseID == c.Id).First();
-            CBoxAttendingDoctor.SelectedItem = _DoctorList.Where(c => value.AttendingDoctorID == c.Id).First();
+            CBoxStatus.SelectedItem = _StatusList.Where(c => value.StatusID == c.Id).FirstOrDefault();
+            CBoxDisease.SelectedItem = _DiseaseList.Where(c => value.DiseaseID == c.Id).FirstOrDefault();
+            CBoxAttendingDoctor.SelectedItem = _DoctorList.Where(c => value.AttendingDoctorID == c.Id).FirstOrDefault();
         }
     }
 
